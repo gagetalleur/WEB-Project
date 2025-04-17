@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saltwater Fish Quiz</title>
+  <link rel="stylesheet" href="css/mystyles.css">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #e0f7fa;
+      padding: 2rem;
+      color: #003b49;
+    }
+
+    .quiz-container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .question {
+      margin-bottom: 1rem;
+    }
+
+    .question p {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .question label {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    button {
+      display: block;
+      margin: 1.5rem auto;
+      padding: 0.5rem 2rem;
+      background-color: #00796b;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="fish.html">Aquarium</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="resume.html">Resume</a></li>
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="quiz.html">Quiz</a></li> 
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+  <div class="quiz-container">
+    <h1>Saltwater Fish Quiz</h1>
+
+    <form id="quizForm">
+      <div class="question">
+        <p>1. Which fish is famous from Finding Nemo?</p>
+        <label><input type="radio" name="q1" value="a" /> Blue Tang</label>
+        <label><input type="radio" name="q1" value="b" /> Clownfish</label>
+        <label><input type="radio" name="q1" value="c" /> Royal Gramma</label>
+      </div>
+
+      <div class="question">
+        <p>2. Which fish is known for needing lots of swimming space?</p>
+        <label><input type="radio" name="q2" value="a" /> Clownfish</label>
+        <label><input type="radio" name="q2" value="b" /> Blue Tang</label>
+        <label><input type="radio" name="q2" value="c" /> Goby</label>
+      </div>
+
+      <div class="question">
+        <p>3. Which fish is known for its vibrant purple and yellow color?</p>
+        <label><input type="radio" name="q3" value="a" /> Royal Gramma</label>
+        <label><input type="radio" name="q3" value="b" /> Triggerfish</label>
+        <label><input type="radio" name="q3" value="c" /> Mandarin Dragonet</label>
+      </div>
+
+      <button type="button" onclick="gradeQuiz()">Submit</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function gradeQuiz() {
+      const answers = {
+        q1: 'b',
+        q2: 'b',
+        q3: 'a'
+      };
+
+      let score = 0;
+      const total = Object.keys(answers).length;
+
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === answers[q]) {
+          score++;
+        }
+      }
+
+      const resultText = `You got ${score} out of ${total} correct!`;
+      document.getElementById("result").textContent = resultText;
+    }
+  </script>
+</body>
+</html>
